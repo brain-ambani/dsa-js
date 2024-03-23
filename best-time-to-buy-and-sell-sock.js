@@ -14,19 +14,38 @@
 // Explanation: In this case, no transactions are done and the max profit = 0.
 
 //  Solution 1: Brute Force
+// function maxProfit(prices) {
+//   let globalProfit = 0;
+
+//   for (let i = 0; i < prices.length - 1; i++) {
+//     for (let j = i + 1; j < prices.length; j++) {
+//       const currentProfit = prices[j] - prices[i];
+
+//       if (currentProfit > globalProfit) {
+//         globalProfit = currentProfit;
+//       }
+//     }
+//   }
+//   return globalProfit;
+// }
+
+// const res = maxProfit([7, 1, 5, 3, 6, 4]); // 5
+
+// console.log(res);
+
+// Solution 2: greedy algorithm approach
+
 function maxProfit(prices) {
-  let globalProfit = 0;
+  let minStockPrice = prices[0] || 0;
+  let profit = 0;
 
-  for (let i = 0; i < prices.length - 1; i++) {
-    for (let j = i + 1; j < prices.length; j++) {
-      const currentProfit = prices[j] - prices[i];
-
-      if (currentProfit > globalProfit) {
-        globalProfit = currentProfit;
-      }
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] < minStockPrice) {
+      minStockPrice = prices[i];
     }
+    profit = Math.max(profit, prices[i] - minStockPrice);
   }
-  return globalProfit;
+  return profit;
 }
 
 const res = maxProfit([7, 1, 5, 3, 6, 4]); // 5
