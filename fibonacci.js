@@ -14,7 +14,9 @@ const fib = function (n) {
   for (let i = 2; i <= n; i++) {
     arr.push(arr[i - 1] + arr[i - 2]);
   }
-  console.log(arr[n]);
+  return arr[n];
 };
 
-fib(7);
+const res = fib(7);
+
+console.log(res);
