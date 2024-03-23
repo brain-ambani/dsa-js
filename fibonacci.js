@@ -8,15 +8,25 @@
 
 // Fibonacci Series using a for loop
 
+// const fib = function (n) {
+//   const arr = [0, 1];
+
+//   for (let i = 2; i <= n; i++) {
+//     arr.push(arr[i - 1] + arr[i - 2]);
+//   }
+//   return arr[n];
+// };
+
+// const res = fib(-1);
+
+// console.log(res);
+
+// Fibonacci Series using recursion
 const fib = function (n) {
-  const arr = [0, 1];
+  if (n <= 1) return n;
 
-  for (let i = 2; i <= n; i++) {
-    arr.push(arr[i - 1] + arr[i - 2]);
-  }
-  return arr[n];
+  return fib(n - 1) + fib(n - 2);
 };
-
 const res = fib(7);
 
 console.log(res);
